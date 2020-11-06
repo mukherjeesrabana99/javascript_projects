@@ -30,8 +30,8 @@ add_question_btn.addEventListener("click", ()=>{
     <h5 class="card-title">Question</h5>
     <p class="card-text">${question_input.value}</p>
     <h5 class="card-title">Answer</h5>
-    <p class="card-text" id="show-answer">show answer</p>
-    <p id="answer-text"></p>
+    <p class="card-text" style="color:blue; cursor:pointer;" id="show-answer">show answer</p>
+    <p id="answer-text" class="show hidden">${answer_input.value}</p>
     <button type="button" class="btn btn-primary" id="del-btn">Delete</button>
   </div>
 </div>
@@ -43,7 +43,14 @@ add_question_btn.addEventListener("click", ()=>{
 		answer_input.value=""
 		show_answer=flashCard.querySelector("#show-answer")
 		answer_text=flashCard.querySelector("#answer-text")
-		show_answer.addEventListener("click", ()=>answer_text.innerText=answer_input.value)
+		show_answer.addEventListener("click", ()=>{
+			answer_text.classList.toggle("hidden")
+			if (show_answer.innerHTML === "show answer") {
+			    show_answer.innerHTML = "hide answer";
+			  } else {
+			    show_answer.innerHTML = "show answer";
+			  }
+		})
 		del_btn=flashCard.querySelector("#del-btn")
 		del_btn.addEventListener("click",()=>flashCard.remove())
 		flashcard_container.appendChild(flashCard)
