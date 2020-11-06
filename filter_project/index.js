@@ -94,7 +94,7 @@ const foods=[
 food_container=document.querySelector("#food-container")
 const all_food=foods.map(food=>{
 	return `
-	<div class="row">
+	
 	<div class="col-lg-3 col-md-6">
 	<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="${food.image}" alt="Card image cap">
@@ -104,12 +104,12 @@ const all_food=foods.map(food=>{
   </div>
 </div>
 </div>
-</div>
+
 `
 })
 healthy_foods=foods.filter(food=>food.category=="healthy")
 filtered_healthy_foods=healthy_foods.map(food=>{
-	return `<div class="row">
+	return `
 	<div class="col-lg-3 col-md-6">
 	<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="${food.image}" alt="Card image cap">
@@ -119,11 +119,11 @@ filtered_healthy_foods=healthy_foods.map(food=>{
   </div>
 </div>
 </div>
-</div>`
+`
 })
 unhealthy_foods=foods.filter(food=>food.category=="unhealthy")
 filtered_unhealthy_foods=unhealthy_foods.map(food=>{
-	return `<div class="row">
+	return `
 	<div class="col-lg-4 col-md-6">
 	<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="${food.image}" alt="Card image cap">
@@ -133,11 +133,11 @@ filtered_unhealthy_foods=unhealthy_foods.map(food=>{
   </div>
 </div>
 </div>
-</div>`
+`
 })
 junk_foods=foods.filter(food=>food.category=="junk")
 filtered_junk_foods=junk_foods.map(food=>{
-	return `<div class="row">
+	return `
 	<div class="col-lg-4 col-md-6">
 	<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="${food.image}" alt="Card image cap">
@@ -147,7 +147,7 @@ filtered_junk_foods=junk_foods.map(food=>{
   </div>
 </div>
 </div>
-</div>`
+`
 })
 const btns=document.querySelectorAll(".btn")
 
@@ -158,27 +158,27 @@ btns.forEach(btn=>{
 		switch(this.dataset.id){
 			case "healthy":
 			console.log("healthy btn clicked")
-			food_container.innerHTML+=filtered_healthy_foods.join("");
+			food_container.innerHTML=filtered_healthy_foods.join("");
 			windows.location.reload()
 			break;
 			case "unhealthy":
 			console.log("unhealthy btn clicked")
-			food_container.innerHTML+=filtered_unhealthy_foods.join("");
+			food_container.innerHTML=filtered_unhealthy_foods.join("");
 			windows.location.reload()
 			break;
 			case "junk":
 			console.log("junk btn clicked")
-			food_container.innerHTML+=filtered_junk_foods.join("");
+			food_container.innerHTML=filtered_junk_foods.join("");
 			windows.location.reload()
 			break;
 			case "all":
 			console.log("all btn clicked")
-			food_container.innerHTML+=all_food.join("");
+			food_container.innerHTML=all_food.join("");
 			windows.location.reload() 
 			break;
 			default:
 			console.log("nothing clicked")
-			food_container.innerHTML+=all_food.join("");
+			food_container.innerHTML=all_food.join("");
 			
 
 		}
