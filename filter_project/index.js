@@ -95,7 +95,7 @@ food_container=document.querySelector("#food-container")
 const all_food=foods.map(food=>{
 	return `
 	
-	<div class="col-lg-3 col-md-6">
+	<div class="col-lg-3 col-md-6 col-sm-6">
 	<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="${food.image}" alt="Card image cap">
   <div class="card-body">
@@ -110,7 +110,7 @@ const all_food=foods.map(food=>{
 healthy_foods=foods.filter(food=>food.category=="healthy")
 filtered_healthy_foods=healthy_foods.map(food=>{
 	return `
-	<div class="col-lg-3 col-md-6">
+	<div class="col-lg-3 col-md-6 col-sm-6">
 	<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="${food.image}" alt="Card image cap">
   <div class="card-body">
@@ -124,7 +124,7 @@ filtered_healthy_foods=healthy_foods.map(food=>{
 unhealthy_foods=foods.filter(food=>food.category=="unhealthy")
 filtered_unhealthy_foods=unhealthy_foods.map(food=>{
 	return `
-	<div class="col-lg-4 col-md-6">
+	<div class="col-lg-4 col-md-6 col-sm-6">
 	<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="${food.image}" alt="Card image cap">
   <div class="card-body">
@@ -138,7 +138,7 @@ filtered_unhealthy_foods=unhealthy_foods.map(food=>{
 junk_foods=foods.filter(food=>food.category=="junk")
 filtered_junk_foods=junk_foods.map(food=>{
 	return `
-	<div class="col-lg-4 col-md-6">
+	<div class="col-lg-4 col-md-6 col-sm-6">
 	<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="${food.image}" alt="Card image cap">
   <div class="card-body">
