@@ -5,74 +5,15 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	</head>
 	<body>
-		<div class="container">
-			<h6>Please enter your Budget</h6>
-			<input type="text" id="budget-input">
-			<button type="button" id="add-budget-btn" class="btn btn-sm btn-warning">Add Budget</button>
+		<div class="fluid-container">
+			<input class="form-control" id="income-input" placeholder="Enter your Income">
+			<input class="form-control" id="item-input" placeholder="Enter your item">
+			<input class="form-control" id="quantity-input" placeholder="How Many?">
+			<input class="form-control" id="price-input" placeholder="Enter item price">
+			<button type="button" class="btn btn-info" id="btn">Add Entry</button>
+			<div class="budget-container"></div>
 		</div>
-		<div class="container">
-			<h6>Please enter your Expense Item</h6>
-			<input type="text" id="item-input">
-			<button type="button" id="add-item-btn" class="btn btn-sm btn-danger">Add Item</button>
-
-		</div>
-		<div class="container">
-			<h6>Please enter your expense</h6>
-			<input type="text" id="expense-input">
-			<button type="button" id="add-expense-btn" class="btn btn-sm btn-info">Add Expense</button>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-4 col-md-6">
-				<div class="card">
-					<div class="card-header">
-						<h6>Budget</h6>
-						<i class="fa fa-money"></i>
-					</div>
-					<div class="card-body">
-						
-						<p id="budget-value"></p>
-					</div>
-					<div class="card-footer">
-						<h6>Exprnse Title</h6>
-						<p id="expense-title"></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="card">
-					<div class="card-header">
-						<h6>Expenses</h6>
-						<i class="fa fa-calendar"></i>
-					</div>
-					<div class="card-body">
-						
-						<p id="total-expense-value"></p>
-					</div>
-					<div class="card-footer">
-						<h6>Expense Value</h6>
-						<div id="expense-value"></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="card">
-					<div class="card-header">
-						<h6>balance</h6>
-						<i class="fa fa-dollar"></i>
-					</div>
-					<div class="card-body">
-						
-						<p id="balance-value"></p>
-					</div>
-					<div class="card-footer">
-						<h6>Actions</h6>
-						<div id="action"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<script src="script.js"></script>
+		<!-- <script src="script.js"></script> -->
+		<script src="index.js"></script>
 	</body>
 </html>
