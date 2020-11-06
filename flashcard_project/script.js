@@ -23,8 +23,7 @@ add_question_btn.addEventListener("click", ()=>{
 	saveBtn.addEventListener("click", ()=>{
 		let flashCard=document.createElement("div")
 		flashCard.innerHTML=`
-		<div class="row">
-		<div class="col-lg-4">
+		<div class="col-lg-3 col-md-3 col-sm-6">
 		<div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Question</h5>
@@ -34,7 +33,6 @@ add_question_btn.addEventListener("click", ()=>{
     <p id="answer-text" class="show hidden">${answer_input.value}</p>
     <button type="button" class="btn btn-primary" id="del-btn">Delete</button>
   </div>
-</div>
 </div>
 </div>
 
