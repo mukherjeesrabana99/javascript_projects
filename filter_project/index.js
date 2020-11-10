@@ -115,22 +115,35 @@ const btns=document.querySelectorAll(".btn")
 const search=document.querySelector("#search");
 const search_btn=document.querySelector("#search-btn")
 const sort_btn=document.querySelector("#sort-btn")
+// declaring searched foods
 const searched_food=foods.filter(food=>food.name.includes(search.value)||
 		food.category.includes(search.value))
+//----------------------------------------------------------------------------
+
+
 // declaring and console loging sorted foods
 const sorted_foods=foods.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
 console.log(foods.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)))
 //------------------------------------------------------------------------------
+
+
+// declaring healthy foods
 const healthy_foods=foods.filter(food=>food.category=="healthy")
+//-----------------------------------------------------------------------------
 
+
+//declaring unhealthy foods
 const unhealthy_foods=foods.filter(food=>food.category=="unhealthy")
+//---------------------------------------------------------------------------------
 
+
+//declaring junk foods
 const junk_foods=foods.filter(food=>food.category=="junk")
+//-------------------------------------------------------------------------
 
 
 
-
-// rendering all food
+//declaring constant rendering all food
 
 const all_food=foods.map(food=>{
 	return `
@@ -150,7 +163,7 @@ const all_food=foods.map(food=>{
 })	
 
 
-// rendering healthy foods
+//declaring constant rendering healthy foods
 
 const filtered_healthy_foods=healthy_foods.map(food=>{
 	return `
@@ -167,7 +180,7 @@ const filtered_healthy_foods=healthy_foods.map(food=>{
 })
 
 
-// rendering unhealthy foods
+//declaring constant rendering unhealthy foods
 
 const filtered_unhealthy_foods=unhealthy_foods.map(food=>{
 	return `<div class="col-lg-3 col-md-6 col-sm-6">
@@ -183,7 +196,7 @@ const filtered_unhealthy_foods=unhealthy_foods.map(food=>{
 
 
 
-// rendering junk foods
+//declaring constant rendering junk foods
 
 const filtered_junk_foods=junk_foods.map(food=>{
 	return `
@@ -203,7 +216,7 @@ const filtered_junk_foods=junk_foods.map(food=>{
 
 // EVENT LISTENERS
 
-
+//rendering all food on loading dom
 window.addEventListener("DOMContentLoaded", ()=>food_container.innerHTML=all_food.join(""))
 
 // search btn eventlisteners
