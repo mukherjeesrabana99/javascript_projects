@@ -92,6 +92,8 @@ const foods=[
 ]
 
 food_container=document.querySelector("#food-container")
+const search=document.querySelector("#search");
+const search_btn=document.querySelector("#search-btn")
 const all_food=foods.map(food=>{
 	return `
 	
@@ -107,6 +109,33 @@ const all_food=foods.map(food=>{
 
 `
 })
+let toSearch="bowl";
+search_btn.addEventListener("click", (e)=>{
+	e.preventDefault()
+	console.log(`search btn clicked ${e}`)
+	console.log(foods.filter(food=>food.name.indexOf(search.value)!==-1))
+	searched_food=foods.filter(food=>food.name.includes(search.value))
+	filtered_food=searched_food.map(food=>{
+		return `
+		<div class="col-lg-3 col-md-6 col-sm-6">
+	<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="${food.image}" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text">${food.name}.</p>
+    <h6 class="card-text">$ ${food.price}.</h6>
+  </div>
+</div>
+</div>
+		`
+
+	})
+	food_container.innerHTML=filtered_food.join("")
+	console.log(food_container.innerHTML)
+
+})
+	
+
+
 healthy_foods=foods.filter(food=>food.category=="healthy")
 filtered_healthy_foods=healthy_foods.map(food=>{
 	return `
@@ -123,8 +152,7 @@ filtered_healthy_foods=healthy_foods.map(food=>{
 })
 unhealthy_foods=foods.filter(food=>food.category=="unhealthy")
 filtered_unhealthy_foods=unhealthy_foods.map(food=>{
-	return `
-	<div class="col-lg-4 col-md-6 col-sm-6">
+	return `<div class="col-lg-3 col-md-6 col-sm-6">
 	<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="${food.image}" alt="Card image cap">
   <div class="card-body">
@@ -132,8 +160,7 @@ filtered_unhealthy_foods=unhealthy_foods.map(food=>{
     <h6 class="card-text">$ ${food.price}.</h6>
   </div>
 </div>
-</div>
-`
+</div>`
 })
 junk_foods=foods.filter(food=>food.category=="junk")
 filtered_junk_foods=junk_foods.map(food=>{
@@ -151,7 +178,7 @@ filtered_junk_foods=junk_foods.map(food=>{
 })
 const btns=document.querySelectorAll(".btn")
 
-// window.addEventListener("DOMContentLoaded", ()=>food_container.innerHTML+=all_food)
+window.addEventListener("DOMContentLoaded", ()=>food_container.innerHTML=all_food.join(""))
 
 btns.forEach(btn=>{
 	btn.addEventListener("click", function(){
@@ -159,12 +186,10 @@ btns.forEach(btn=>{
 			case "healthy":
 			console.log("healthy btn clicked")
 			food_container.innerHTML=filtered_healthy_foods.join("");
-			windows.location.reload()
 			break;
 			case "unhealthy":
 			console.log("unhealthy btn clicked")
 			food_container.innerHTML=filtered_unhealthy_foods.join("");
-			windows.location.reload()
 			break;
 			case "junk":
 			console.log("junk btn clicked")
@@ -174,11 +199,7 @@ btns.forEach(btn=>{
 			case "all":
 			console.log("all btn clicked")
 			food_container.innerHTML=all_food.join("");
-			windows.location.reload() 
 			break;
-			default:
-			console.log("nothing clicked")
-			food_container.innerHTML=all_food.join("");
 			
 
 		}
