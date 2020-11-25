@@ -115,154 +115,47 @@ const btns=document.querySelectorAll(".btn")
 const search=document.querySelector("#search");
 const search_btn=document.querySelector("#search-btn")
 const sort_btn=document.querySelector("#sort-btn")
-// declaring searched foods
 const searched_food=foods.filter(food=>food.name.includes(search.value)||
 		food.category.includes(search.value))
-//----------------------------------------------------------------------------
-
-
 // declaring and console loging sorted foods
-const sorted_foods=foods.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
-console.log(foods.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)))
+// const sorted_foods=foods.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+// console.log(foods.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)))
 //------------------------------------------------------------------------------
-
-
-// declaring healthy foods
 const healthy_foods=foods.filter(food=>food.category=="healthy")
-//-----------------------------------------------------------------------------
 
-
-//declaring unhealthy foods
 const unhealthy_foods=foods.filter(food=>food.category=="unhealthy")
-//---------------------------------------------------------------------------------
 
-
-//declaring junk foods
 const junk_foods=foods.filter(food=>food.category=="junk")
-//-------------------------------------------------------------------------
 
 
+displayFood=items=>{
+	const all_items=items.map(item=>{
+		return `
+		<div class="col-lg-3 col-md-6 col-sm-6">
+		<div class="card" style="width: 18rem;">
+		  <img class="card-img-top" src="${item.image}" alt="Card image cap">
+		  <div class="card-body">
+		    <p class="card-text">${item.name}.</p>
+		    <h6 class="card-text">$ ${item.price}.</h6>
+		    Calorie-><h6 class="card-text"> {item.calorie}.</h6>
+		  </div>
+		</div>
+		</div>
+		`
+	})
+	food_container.innerHTML=all_items.join("")
+}
 
-//declaring constant rendering all food
-
-const all_food=foods.map(food=>{
-	return `
-	
-	<div class="col-lg-3 col-md-6 col-sm-6">
-	<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${food.image}" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">${food.name}.</p>
-    <h6 class="card-text">$ ${food.price}.</h6>
-    Calorie-><h6 class="card-text"> ${food.calorie}.</h6>
-  </div>
-</div>
-</div>
-
-`
-})	
-
-
-//declaring constant rendering healthy foods
-
-const filtered_healthy_foods=healthy_foods.map(food=>{
-	return `
-	<div class="col-lg-3 col-md-6 col-sm-6">
-	<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${food.image}" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">${food.name}.</p>
-    <h6 class="card-text">$ ${food.price}.</h6>
-  </div>
-</div>
-</div>
-`
-})
-
-
-//declaring constant rendering unhealthy foods
-
-const filtered_unhealthy_foods=unhealthy_foods.map(food=>{
-	return `<div class="col-lg-3 col-md-6 col-sm-6">
-	<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${food.image}" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">${food.name}.</p>
-    <h6 class="card-text">$ ${food.price}.</h6>
-  </div>
-</div>
-</div>`
-})
-
-
-
-//declaring constant rendering junk foods
-
-const filtered_junk_foods=junk_foods.map(food=>{
-	return `
-	<div class="col-lg-4 col-md-6 col-sm-6">
-	<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${food.image}" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">${food.name}.</p>
-    <h6 class="card-text">$ ${food.price}.</h6>
-  </div>
-</div>
-</div>
-`
-})
 
 
 
 // EVENT LISTENERS
 
-//rendering all food on loading dom
-window.addEventListener("DOMContentLoaded", ()=>food_container.innerHTML=all_food.join(""))
 
-// search btn eventlisteners
-
-search_btn.addEventListener("click", (e)=>{
-	e.preventDefault()
-	console.log(`search btn clicked ${e}`)
-	console.log(foods.filter(food=>food.name.indexOf(search.value)!==-1||
-		food.category.indexOf(search.value)!==-1))
-	filtered_food=searched_food.map(food=>{
-		return `
-		<div class="col-lg-3 col-md-6 col-sm-6">
-	<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${food.image}" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">${food.name}.</p>
-    <h6 class="card-text">$ ${food.price}.</h6>
-  </div>
-</div>
-</div>
-		`
-
-	})
-	food_container.innerHTML=filtered_food.join("")
-	console.log(food_container.innerHTML)
-
-})
+window.addEventListener("DOMContentLoaded", ()=>displayFood(foods))
 
 // sort btn eventlisteners
 
-sort_btn.addEventListener("click", ()=>{
-	sortedHTML=sorted_foods.map(food=>{
-		return `
-		<div class="col-lg-3 col-md-6 col-sm-6">
-	<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${food.image}" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">${food.name}.</p>
-    <h6 class="card-text">$ ${food.price}.</h6>
-  </div>
-</div>
-</div>
-		`
-	})
-	food_container.innerHTML=sortedHTML.join("")
-})
 
 
 // adding eventlisteners to each of the other btns
@@ -273,20 +166,25 @@ btns.forEach(btn=>{
 		switch(this.dataset.id){
 			case "healthy":
 			console.log("healthy btn clicked")
-			food_container.innerHTML=filtered_healthy_foods.join("");
+			displayFood(healthy_foods)
 			break;
 			case "unhealthy":
 			console.log("unhealthy btn clicked")
-			food_container.innerHTML=filtered_unhealthy_foods.join("");
+			displayFood(unhealthy_foods)
 			break;
 			case "junk":
 			console.log("junk btn clicked")
-			food_container.innerHTML=filtered_junk_foods.join("");
-			windows.location.reload()
+			displayFood(junk_foods)
+			break;
+			case "searchbtn":
+			console.log("search btn clicked")
+			console.log(foods.filter(food=>food.name.indexOf(search.value)!==-1||
+			food.category.indexOf(search.value)!==-1))
+			displayFood(searched_food)
 			break;
 			case "all":
 			console.log("all btn clicked")
-			food_container.innerHTML=all_food.join("");
+			displayFood(foods)
 			break;
 			
 
